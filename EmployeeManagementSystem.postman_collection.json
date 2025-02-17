@@ -1,0 +1,160 @@
+{
+    "info": {
+        "name": "Employee Management System",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "item": [
+        {
+            "name": "Signup",
+            "request": {
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n    \"query\": \"\\n                            mutation {\\n                                signup(username: \\\"testuser\\\", email: \\\"test@example.com\\\", password: \\\"password123\\\") {\\n                                    username\\n                                    email\\n                                    token\\n                                }\\n                            }\\n                        \"\n}"
+                },
+                "url": {
+                    "raw": "http://localhost:5000/graphql"
+                }
+            }
+        },
+        {
+            "name": "Login",
+            "request": {
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n    \"query\": \"\\n                            query {\\n                                login(username: \\\"testuser\\\", email: \\\"test@example.com\\\", password: \\\"password123\\\") {\\n                                    username\\n                                    email\\n                                    token\\n                                }\\n                            }\\n                        \"\n}"
+                },
+                "url": {
+                    "raw": "http://localhost:5000/graphql"
+                }
+            }
+        },
+        {
+            "name": "Get All Employees",
+            "request": {
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n    \"query\": \"\\n                            query {\\n                                getAllEmployees {\\n                                    _id\\n                                    first_name\\n                                    last_name\\n                                    email\\n                                    designation\\n                                    department\\n                                }\\n                            }\\n                        \"\n}"
+                },
+                "url": {
+                    "raw": "http://localhost:5000/graphql"
+                }
+            }
+        },
+        {
+            "name": "Add New Employee",
+            "request": {
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n    \"query\": \"\\n                            mutation {\\n                                addEmployee(\\n                                    first_name: \\\"John\\\",\\n                                    last_name: \\\"Doe\\\",\\n                                    email: \\\"john.doe@example.com\\\",\\n                                    gender: \\\"Male\\\",\\n                                    designation: \\\"Software Engineer\\\",\\n                                    salary: 5000.00,\\n                                    date_of_joining: \\\"2024-01-15\\\",\\n                                    department: \\\"Engineering\\\",\\n                                    employee_photo: \\\"john_doe.jpg\\\"\\n                                ) {\\n                                    _id\\n                                    first_name\\n                                    last_name\\n                                    email\\n                                    designation\\n                                    department\\n                                }\\n                            }\\n                        \"\n}"
+                },
+                "url": {
+                    "raw": "http://localhost:5000/graphql"
+                }
+            }
+        },
+        {
+            "name": "Search Employee by ID",
+            "request": {
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n    \"query\": \"\\n                            query {\\n                                getEmployeeById(eid: \\\"EMPLOYEE_ID_HERE\\\") {\\n                                    _id\\n                                    first_name\\n                                    last_name\\n                                    email\\n                                    designation\\n                                    department\\n                                }\\n                            }\\n                        \"\n}"
+                },
+                "url": {
+                    "raw": "http://localhost:5000/graphql"
+                }
+            }
+        },
+        {
+            "name": "Update Employee",
+            "request": {
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n    \"query\": \"\\n                            mutation {\\n                                updateEmployee(\\n                                    eid: \\\"EMPLOYEE_ID_HERE\\\",\\n                                    first_name: \\\"Updated Name\\\",\\n                                    salary: 6000.00\\n                                ) {\\n                                    _id\\n                                    first_name\\n                                    salary\\n                                }\\n                            }\\n                        \"\n}"
+                },
+                "url": {
+                    "raw": "http://localhost:5000/graphql"
+                }
+            }
+        },
+        {
+            "name": "Delete Employee",
+            "request": {
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n    \"query\": \"\\n                            mutation {\\n                                deleteEmployee(eid: \\\"EMPLOYEE_ID_HERE\\\")\\n                            }\\n                        \"\n}"
+                },
+                "url": {
+                    "raw": "http://localhost:5000/graphql"
+                }
+            }
+        },
+        {
+            "name": "Search Employees by Designation or Department",
+            "request": {
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n    \"query\": \"\\n                            query {\\n                                searchEmployees(designation: \\\"Software Engineer\\\", department: \\\"Engineering\\\") {\\n                                    _id\\n                                    first_name\\n                                    last_name\\n                                    email\\n                                    designation\\n                                    department\\n                                }\\n                            }\\n                        \"\n}"
+                },
+                "url": {
+                    "raw": "http://localhost:5000/graphql"
+                }
+            }
+        }
+    ]
+}
